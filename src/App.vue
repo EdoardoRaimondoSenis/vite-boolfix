@@ -21,15 +21,21 @@ import axios from 'axios';
         if (store.searchOption != '') {
           searchURL += `&query=${store.searchOption}`
         }
+        
         axios.
             get(searchURL)
             .then(element => {
-              console.log(element.data);
               store.movieList = element.data.results;
-              console.log(store.movieList);
+              console.log('Lista film trovati', store.movieList);
             })
             .catch(err => {
               console.log(err);
+            })
+        axios.
+            get(store.apiLanguages)
+            .then(element => {
+              store.movieLanguages = element.data;
+              console.log('lingua', store.movieLanguages);
             })
         }
     },
