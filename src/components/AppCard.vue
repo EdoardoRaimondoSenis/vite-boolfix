@@ -15,13 +15,18 @@ import { store } from '../store';
 </script>
 
 <template>
-    <div>
-        <span v-for="element in movie.movieList" :value="element.title">{{ element.title }}</span>
-        <span v-for="element in movie.movieList" :value="element.original_title">{{ element.original_title }}</span>
-        <span v-for="element in movie.movieList" :value="element.original_language">{{ element.original_language }}</span>
+    <div class="card">
+        <span :value="movie.title">{{ movie.title }}</span>
+        <span :value="movie.original_title">{{ movie.original_title }}</span>
+        <span :value="movie.original_language">{{ movie.original_language }}</span>
     </div>
 </template>
 
 <style lang="scss">
+
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
 
 </style>

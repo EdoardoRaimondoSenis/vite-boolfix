@@ -17,7 +17,7 @@ import axios from 'axios';
 
     methods: {
       getMovie() {
-        let searchURL = store.apiURL
+        let searchURL = store.apiURL;
         if (store.searchOption != '') {
           searchURL += `&query=${store.searchOption}`
         }
@@ -25,12 +25,16 @@ import axios from 'axios';
             get(searchURL)
             .then(element => {
               console.log(element.data);
-              store.movieList = element.data;
+              store.movieList = element.data.results;
+              console.log(store.movieList);
             })
             .catch(err => {
               console.log(err);
             })
         }
+    },
+    created() {
+      this.getMovie()
     }
 
   }
@@ -45,6 +49,12 @@ import axios from 'axios';
 </template>
 
 <style lang="scss">
-@use './style/general.scss'
+@use './style/general.scss';
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10% auto;
+  }
 
 </style>
