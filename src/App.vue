@@ -18,8 +18,10 @@ import axios from 'axios';
     methods: {
       getMovie() {
         let searchURL = store.movieURL;
+        let searchSerURL = store.seriesURL
         if (store.searchOption != '') {
           searchURL += `&query=${store.searchOption}`
+          searchSerURL += `&query=${store.searchOption}`
         }
         
         axios.
@@ -31,7 +33,17 @@ import axios from 'axios';
             .catch(err => {
               console.log(err);
             })
+        axios.
+            get(searchSerURL)
+            .then(element => {
+              store.seriesList = element.data.results;
+              console.log('Lista serie TV trovati', store.seriesList);
+            })
+            .catch(err => {
+              console.log(err);
+            })
         },
+        
     },
     created() {
       this.getMovie();

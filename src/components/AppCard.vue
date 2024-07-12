@@ -8,7 +8,10 @@ import germanFlag from '../assets/deutsch.jpeg';
 
     export default {
         name: 'AppCard',
-        props: ['movie'],
+        props: [
+            'movie',
+            'series'
+        ],
         data() {
             return {
                 store,
@@ -54,6 +57,19 @@ import germanFlag from '../assets/deutsch.jpeg';
             <template v-else>
                 <span>{{ movie.original_language }}</span>
                 
+            </template>
+        </div>
+    </div>
+    <div class="card">
+        <span :value="series.title">{{ series.title }}</span>
+        <span :value="series.original_title">{{ series.original_title }}</span>
+        <div>
+            <template v-if="getFlag(series.original_language)">
+                <img class="imgFlag" :src="getFlag(series.original_language)">
+            </template>
+            <template v-else>
+                <span>{{ series.original_language }}</span>
+
             </template>
         </div>
     </div>

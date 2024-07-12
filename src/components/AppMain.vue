@@ -18,14 +18,17 @@ import { store } from '../store.js';
 </script>
 
 <template>
-    <div class="movieList" v-for="element in store.movieList">
+    <div class="resultList" v-for="element in store.movieList">
         <AppCard :movie="element"/>
+    </div>
+    <div class="resultList" v-for="element in store.seriesList">
+        <AppCard :series="element"/>
     </div>
 </template>
 
 <style lang="scss">
 
-    .movieList {
+    .resultList {
         display: flex;
         justify-content: center;
         width: calc(100% / 4 - 4rem);
