@@ -17,7 +17,7 @@ import axios from 'axios';
 
     methods: {
       getMovie() {
-        let searchURL = store.apiURL;
+        let searchURL = store.movieURL;
         if (store.searchOption != '') {
           searchURL += `&query=${store.searchOption}`
         }
@@ -31,16 +31,10 @@ import axios from 'axios';
             .catch(err => {
               console.log(err);
             })
-        axios.
-            get(store.apiLanguages)
-            .then(element => {
-              store.movieLanguages = element.data;
-              console.log('lingua', store.movieLanguages);
-            })
-        }
+        },
     },
     created() {
-      this.getMovie()
+      this.getMovie();
     }
 
   }
