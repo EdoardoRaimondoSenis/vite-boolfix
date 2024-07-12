@@ -1,6 +1,6 @@
 <script>
 
-import AppCard from './components/AppCard.vue';
+import AppCard from './components/AppCardMovies.vue';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import { store } from './store.js'
@@ -18,7 +18,7 @@ import axios from 'axios';
     methods: {
       getMovie() {
         let searchURL = store.movieURL;
-        let searchSerURL = store.seriesURL
+        let searchSerURL = store.seriesURL;
         if (store.searchOption != '') {
           searchURL += `&query=${store.searchOption}`
           searchSerURL += `&query=${store.searchOption}`
@@ -33,17 +33,17 @@ import axios from 'axios';
             .catch(err => {
               console.log(err);
             })
-        axios.
-            get(searchSerURL)
-            .then(element => {
-              store.seriesList = element.data.results;
-              console.log('Lista serie TV trovati', store.seriesList);
-            })
-            .catch(err => {
-              console.log(err);
-            })
+            
+            axios.
+              get(searchSerURL)
+              .then(element => {
+                store.seriesList = element.data.results;
+                console.log('Lista serie trovati', store.seriesList);
+              })
+              .catch(err => {
+                console.log(err);
+              })
         },
-        
     },
     created() {
       this.getMovie();

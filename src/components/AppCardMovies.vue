@@ -47,6 +47,7 @@ import germanFlag from '../assets/deutsch.jpeg';
 </script>
 
 <template>
+
     <div class="card">
         <span :value="movie.title">{{ movie.title }}</span>
         <span :value="movie.original_title">{{ movie.original_title }}</span>
@@ -56,23 +57,10 @@ import germanFlag from '../assets/deutsch.jpeg';
             </template>
             <template v-else>
                 <span>{{ movie.original_language }}</span>
-                
             </template>
         </div>
     </div>
-    <div class="card">
-        <span :value="series.title">{{ series.title }}</span>
-        <span :value="series.original_title">{{ series.original_title }}</span>
-        <div>
-            <template v-if="getFlag(series.original_language)">
-                <img class="imgFlag" :src="getFlag(series.original_language)">
-            </template>
-            <template v-else>
-                <span>{{ series.original_language }}</span>
-
-            </template>
-        </div>
-    </div>
+    
 </template>
 
 <style lang="scss">
