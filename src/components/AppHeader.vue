@@ -13,7 +13,10 @@ import { store } from '../store'
             resetInput() {
                 store.searchOption = '';
                 this.$emit('search')
-            }
+            },
+            handleEnterKey() {
+                this.$emit('search');
+            },
         }
     }
 
@@ -23,7 +26,7 @@ import { store } from '../store'
     <header>
         <h1>BoolFlix</h1>
         <div>
-            <input v-model="store.searchOption" type="text" placeholder="Scrivi un film o Serie TV">
+            <input @keydown.enter.prevent="handleEnterKey" v-model="store.searchOption" type="text" placeholder="Scrivi un film o Serie TV">
             <button @click.prevent="$emit('search')">Search</button>
             <button @click.prevent="resetInput">Reset</button>
         </div>

@@ -62,7 +62,8 @@ export default {
 
     <div class="card">
         <img :src="backdropImageUrl()" alt="">
-        <span :value="series.title"><strong>Titolo: </strong>{{ series.title }}</span>
+        <div>
+            <span :value="series.title"><strong>Titolo: </strong>{{ series.title }}</span>
         <span :value="series.original_name"><strong>Titolo Originale: </strong>{{ series.original_name }}</span>
         <div>
             <template v-if="getFlag(series.original_language)">
@@ -74,6 +75,7 @@ export default {
         </div>
         <div>
             <i v-for="(star, index) in generateStars(series.vote_average)" :key="index" class="fa-solid fa-star"></i>
+        </div>
         </div>
     </div>
 </template>

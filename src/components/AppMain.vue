@@ -37,9 +37,10 @@ import AppCardMovies from './AppCardMovies.vue';
         height: 25rem;
         margin: 1rem 2rem;
         text-align: left;
-        background-color: bisque;
+        color: white;
+        background-color: rgb(14, 14, 14);
         border-radius: 20px;
-        box-shadow: 5px 5px lightcoral;
+        box-shadow: 5px 5px rgb(51, 51, 51);
     }
 
 </style>

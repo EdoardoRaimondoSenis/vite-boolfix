@@ -64,7 +64,8 @@ import germanFlag from '../assets/deutsch.jpeg';
 
     <div class="card">
         <img :src="backdropImageUrl()" alt="">
-        <span :value="movie.title"><strong>Titolo: </strong>{{ movie.title }}</span>
+        <div class="desc">
+            <span :value="movie.title"><strong>Titolo: </strong>{{ movie.title }}</span>
         <span :value="movie.original_title"><strong>Titolo Originale: </strong>{{ movie.original_title }}</span>
         <div>
             <template v-if="getFlag(movie.original_language)">
@@ -76,6 +77,7 @@ import germanFlag from '../assets/deutsch.jpeg';
         </div>
         <div>
             <i v-for="(star, index) in generateStars(movie.vote_average)" :key="index" class="fa-solid fa-star"></i>
+        </div>
         </div>
     </div>
     
