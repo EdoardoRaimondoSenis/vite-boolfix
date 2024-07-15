@@ -45,8 +45,15 @@ import germanFlag from '../assets/deutsch.jpeg';
             },
             backdropImageUrl() {
                 return this.backdrop(this.movie);
+            },
+            convertToFiveScale(vote) {
+                const roundedVote = Math.round(vote);
+                return Math.round((roundedVote / 10) * 5);
+            },
+            generateStars(vote) {
+                const starCount = this.convertToFiveScale(vote);
+                return Array(starCount).fill(0); // Crea un array con `starCount` elementi
             }
-            
         },
         
     }
@@ -57,15 +64,18 @@ import germanFlag from '../assets/deutsch.jpeg';
 
     <div class="card">
         <img :src="backdropImageUrl()" alt="">
-        <span :value="movie.title">{{ movie.title }}</span>
-        <span :value="movie.original_title">{{ movie.original_title }}</span>
+        <span :value="movie.title"><strong>Titolo: </strong>{{ movie.title }}</span>
+        <span :value="movie.original_title"><strong>Titolo Originale: </strong>{{ movie.original_title }}</span>
         <div>
             <template v-if="getFlag(movie.original_language)">
                 <img class="imgFlag" :src="getFlag(movie.original_language)">
             </template>
             <template v-else>
-                <span>{{ movie.original_language }}</span>
+                <span><strong>Lingua: </strong>{{ movie.original_language }}</span>
             </template>
+        </div>
+        <div>
+            <i v-for="(star, index) in generateStars(movie.vote_average)" :key="index" class="fa-solid fa-star"></i>
         </div>
     </div>
     
@@ -79,7 +89,7 @@ import germanFlag from '../assets/deutsch.jpeg';
     }
 
     .imgFlag {
-        margin: 1rem;
+        margin: 1rem 0;
         width: 40px;
         border-radius: 5px;
     }

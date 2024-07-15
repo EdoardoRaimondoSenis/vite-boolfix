@@ -36,7 +36,7 @@ import AppCardMovies from './AppCardMovies.vue';
         width: calc(100% / 4 - 4rem);
         height: 25rem;
         margin: 1rem 2rem;
-        text-align: center;
+        text-align: left;
         background-color: bisque;
         border-radius: 20px;
         box-shadow: 5px 5px lightcoral;
