@@ -19,6 +19,8 @@ import axios from 'axios';
       getMovie() {
         let searchURL = store.movieURL;
         let searchSerURL = store.seriesURL;
+        let searchImgURL = store.imgURL;
+
         if (store.searchOption != '') {
           searchURL += `&query=${store.searchOption}`
           searchSerURL += `&query=${store.searchOption}`
@@ -33,8 +35,8 @@ import axios from 'axios';
             .catch(err => {
               console.log(err);
             })
-            
-            axios.
+
+        axios.
               get(searchSerURL)
               .then(element => {
                 store.seriesList = element.data.results;

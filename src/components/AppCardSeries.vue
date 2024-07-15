@@ -38,6 +38,12 @@ import germanFlag from '../assets/deutsch.jpeg';
             getFlag(language) {
                 const flag = this.flags.find(element => element.name === language);
                 return flag ? flag.flag : null;
+            },
+            backdrop(series) {
+                return series.backdrop_path ? `${store.imgURL}${series.backdrop_path}` : '';
+            },
+            backdropImageUrl() {
+                return this.backdrop(this.series);
             }
         }
         
@@ -48,6 +54,7 @@ import germanFlag from '../assets/deutsch.jpeg';
 <template>
 
     <div class="card">
+        <img :src="backdropImageUrl()" alt="">
         <span :value="series.title">{{ series.title }}</span>
         <span :value="series.original_name">{{ series.original_name }}</span>
         <div>
